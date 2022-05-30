@@ -1,38 +1,247 @@
-.App {
+@font-face {
+  font-family: "exo";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/exo_regular.ttf)
+}
+@font-face {
+  font-family: "exo";
+  font-weight: 700;
+  src: url(./fonts/exo_bold.ttf)
+}
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+* {
+  font-family: "exo";
+}
+.shop__ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+h1 {
   text-align: center;
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.shop__ul {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.shop__category.active{
+  color: #ffffff;
+  background-color: #E0A6B1;
+  border-bottom: none;
+  padding: 5px 15px;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.shop__category {
+  border-bottom: 1px dotted #898989;
+  color: #898989; 
+  text-decoration: none;
+  margin-right: 30px;
+  cursor: pointer;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.location {
+  display: flex;
+  justify-content: space-between;
+}
+.location__left {
+  max-width: 500px;
+  width: 100%;
+}
+.location__right {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-left: 25px;
+}
+.location__currently {
+  width: 100%;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 1px solid #4444;
+  padding: 5px 15px;
+  margin-bottom: 15px;
+}
+.location__city , .location__region {
+  font-size: 16px;
+}
+.location__region {
+  color: #b7b7b7;
+  margin-left: 5px;
+}
+.shop__names {
+  border: 1px solid #ebebeb;
+  width: 100%;
+  max-height: 500px;
+  min-height: 500px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.shop__item {
+  padding: 17px;
+  border-bottom: 1px solid #ebebeb;
+  background-color: #fafafa;
+  flex-direction: column;
+  display: flex;
+  min-height: 105px;
+  cursor: pointer;
+}
+.shop__name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+.shop__map {
+  font-size: 13px;
+  color: #cccccc;
+  margin-top: auto;
+ 
+}
+.shop__name-location {
+  font-size: 13px;
+  color: #898989;
+  margin-bottom: 5px;
+}
+.shop__item.active {
+  border: 2px solid pink;
+  border-bottom: 4px solid pink;
+}
+.shop__search {
+  display: flex;
+  width: 100%;
+}
+.shop__description {
+  height: fit-content;
+  padding: 5px 40px;
+  border: 1px solid #ebebeb;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.shop__input-search {
+  width: 100%;
+  padding: 5px 0px 5px 8px;
+  background-color: #fafafa;
+  border: 1px solid #ebebeb;
+  height: fit-content;
+  height: 30.4px;
+  outline: none;
+}
+.shop__input-search:focus {
+  border: 1px solid #333;
+  color: grey;
+}
+.shop__map {
+  width: 100%;
+  max-height: 500px;
+  height: 100%;;
 }
 
-.App-link {
-  color: #61dafb;
+.shop__wrapper {
+  width: 100%;
+  position: relative;
+}
+.shop__wrapper ul{
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  background-color: #e3e3e3;
+  width: 100%;
+}
+.shop__wrapper li {
+  cursor: pointer;
+  color: #202020;
+  background-color: #e3e3e3;
+  cursor: pointer;
+  padding: 5px 0px 5px 8px;
+}
+.shop__wrapper li:not(:last-child) {
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width:1023px) {
+  .location__left {
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media screen and (max-width:767px) {
+  .location {
+    flex-direction: column;
+  }
+  .location__right {
+    margin-left: 0;
+  }
+  .location__left {
+    width: 100%;
+    max-width: 100%;
+  }
+  .shop__names {
+    max-height: 250px;
+    min-height: 250px;
+    margin-bottom: 20px;
+  }
+  .shop__category {
+    margin-right: 10px;
+    font-size: 0.7em;
+  }
+  .shop__search {
+    margin-bottom: 20px;
+  }
+  .shop__item {
+    max-height: 105px;
+  }
+  .shop__map {
+    height: 300px;
+    margin-bottom: 35px;
   }
 }
